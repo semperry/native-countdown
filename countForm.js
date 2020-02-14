@@ -11,6 +11,8 @@ export default function CountForm(props) {
   const [hour, setHour] = useState("08");
   const [minutes, setMinutes] = useState("00");
 
+  const { navigate } = props.navigation;
+
   return (
     <>
       <View style={styles.flexRow}>
@@ -63,14 +65,20 @@ export default function CountForm(props) {
         <Text>{"\n"}</Text>
         <TouchableHighlight
           underlayColor="white"
+          // onPress={() =>
+          //   props.handleDataEntry({ day, month, year, hour, minutes })
+          // }
           onPress={() =>
-            props.handleDataEntry({ day, month, year, hour, minutes })
+            navigate("Counter", {
+              startTime: { hour, minutes, day, year, month }
+            })
           }
         >
           <View style={styles.buttonStyles}>
-            <Link to="/countdown">
+            {/* <Link to="/countdown">
               <Text style={styles.buttonText}>Start Counting</Text>
-            </Link>
+            </Link> */}
+            <Text style={styles.buttonText}>Start Counting</Text>
           </View>
         </TouchableHighlight>
       </View>

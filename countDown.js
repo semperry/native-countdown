@@ -4,7 +4,13 @@ import { Text, View } from "react-native";
 import TimeCard from "./timeCards";
 
 function CountDown(props) {
-  const { day, month, year, hour, minutes } = props.startTime;
+  const {
+    day,
+    month,
+    year,
+    hour,
+    minutes
+  } = props.navigation.state.params.startTime;
   const [countDownDate, setCountDownDate] = useState(
     new Date(`${month} ${day}, ${year} ${hour}:${minutes}:00`).getTime()
   );
